@@ -19,11 +19,6 @@ import java.util.Vector;
 public class customview extends View {
 
 
-
-
-
-
-
     private Paint black;
     private Paint text;
     private Paint white;
@@ -228,20 +223,45 @@ public class customview extends View {
             if(score1==0 &&score2==0)
             {MediaPlayer mp3=MediaPlayer.create(getContext(),R.raw.start);
                 mp3.start();
-                canvas.drawText("ITS A DRAW",cx/2,7*cy/8,text);}
+                canvas.drawText("ITS A DRAW",cx/2,7*cy/8,text);
+                Intent intent=new Intent(getContext(),recycler.class);
+               // intent.putExtra("whowon","5");
+                intent.putExtra("whowon",5);
+                getContext().startActivity(intent);
+            }
             if(score1>score2)
            { MediaPlayer mp=MediaPlayer.create(getContext(),R.raw.player1victory);
              mp.start();
-               canvas.drawText("PLAYER1 WINS",cx/2,7*cy/8,text);}
+               canvas.drawText("PLAYER1 WINS",cx/2,7*cy/8,text);
+               Intent intent=new Intent(getContext(),recycler.class);
+               //intent.putExtra("whowon","1");
+               intent.putExtra("whowon",1);
+               getContext().startActivity(intent);}
             if(score2>score1)
             { MediaPlayer mp2=MediaPlayer.create(getContext(),R.raw.player2victory);
               mp2.start();
                 canvas.drawText("PLAYER2 WINS",cx/2,7*cy/8,text);
+                Intent intent=new Intent(getContext(),recycler.class);
+                intent.putExtra("whowon",2);
+                //intent.putExtra("whowon","2");
+                getContext().startActivity(intent);
             }
+
+
+            //Intent intent=new Intent(getContext(),recycler.class);
+           // if(score1>score2)
+             //   intent.putExtra("whowon","1");
+           // else if(score2>score1)
+             //   intent.putExtra("whowon","2");
+            //else if(score1==score2)
+              //  intent.putExtra("whowon","0");
+                //getContext().startActivity(intent);
 
         }
 
     }
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event)

@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -30,6 +31,7 @@ public class singleactor extends View {
     int[] whichsymbol={0,0,0,0,0,0,0,0,0};
     int rounds=0;
     float cy;
+    int ck=0;
     float x;
     int check=0;
     float y;
@@ -100,123 +102,155 @@ public class singleactor extends View {
         //here
 
             check=0;
+if(ck==1) {
+    if (check != 1 && !v.contains(0) && ((whichsymbol[1] == -1 && whichsymbol[2] == -1) || (whichsymbol[3] == -1 && whichsymbol[6] == -1) || (whichsymbol[4] == -1 && whichsymbol[8] == -1))) {
+        canvas.drawCircle((3 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[0] = -1;
+    } else if (check != 1 && !v.contains(1) && ((whichsymbol[0] == -1 && whichsymbol[2] == -1) || (whichsymbol[4] == -1 && whichsymbol[7] == -1))) {
+        canvas.drawCircle((cx / 2), cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[1] = -1;
+    } else if (check != 1 && !v.contains(2) && ((whichsymbol[0] == -1 && whichsymbol[1] == -1) || (whichsymbol[4] == -1 && whichsymbol[6] == -1) || (whichsymbol[5] == -1 && whichsymbol[8] == -1))) {
+        canvas.drawCircle((7 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[2] = -1;
+    } else if (check != 1 && !v.contains(3) && ((whichsymbol[0] == -1 && whichsymbol[6] == -1) || (whichsymbol[4] == -1 && whichsymbol[5] == -1))) {
+        canvas.drawCircle((3 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[3] = -1;
+    } else if (check != 1 && !v.contains(4) && ((whichsymbol[1] == -1 && whichsymbol[7] == -1) || (whichsymbol[3] == -1 && whichsymbol[5] == -1) || (whichsymbol[0] == -1 && whichsymbol[8] == -1) || (whichsymbol[2] == -1 && whichsymbol[6] == -1))) {
+        canvas.drawCircle((cx / 2), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[4] = -1;
+    } else if (check != 1 && !v.contains(5) && ((whichsymbol[8] == -1 && whichsymbol[2] == -1) || (whichsymbol[3] == -1 && whichsymbol[4] == -1))) {
+        canvas.drawCircle((7 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[5] = -1;
+    } else if (check != 1 && !v.contains(6) && ((whichsymbol[0] == -1 && whichsymbol[3] == -1) || (whichsymbol[7] == -1 && whichsymbol[8] == -1) || (whichsymbol[4] == -1 && whichsymbol[2] == -1))) {
+        canvas.drawCircle((3 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[6] = -1;
+    } else if (check != 1 && !v.contains(7) && ((whichsymbol[1] == -1 && whichsymbol[4] == -1) || (whichsymbol[8] == -1 && whichsymbol[6] == -1))) {
+        canvas.drawCircle((cx / 2), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        check = 1;
+        whichsymbol[7] = -1;
+    } else if (check != 1 && !v.contains(8) && ((whichsymbol[5] == -1 && whichsymbol[2] == -1) || (whichsymbol[7] == -1 && whichsymbol[6] == -1) || (whichsymbol[4] == -1 && whichsymbol[0] == -1))) {
+        canvas.drawCircle((7 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[8] = -1;
+    } else if (check != 1 && whichsymbol[0] == 0 && ((v.contains(1) && v.contains(2)) || (v.contains(3) && v.contains(6)) || (v.contains(4) && v.contains(8)))) {
+        canvas.drawCircle((3 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[0] = -1;
+    } else if (check != 1 && whichsymbol[1] == 0 && ((v.contains(0) && v.contains(2)) || (v.contains(4) && v.contains(7)))) {
+        canvas.drawCircle((cx / 2), cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[1] = -1;
+    } else if (check != 1 && whichsymbol[2] == 0 && ((v.contains(1) && v.contains(0)) || (v.contains(4) && v.contains(6)) || (v.contains(5) && v.contains(8)))) {
+        canvas.drawCircle((7 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[2] = -1;
+    } else if (check != 1 && whichsymbol[3] == 0 && ((v.contains(4) && v.contains(5)) || (v.contains(0) && v.contains(6)))) {
+        canvas.drawCircle((3 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[3] = -1;
+    } else if (check != 1 && whichsymbol[5] == 0 && ((v.contains(8) && v.contains(2)) || (v.contains(4) && v.contains(3)))) {
+        canvas.drawCircle((7 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[5] = -1;
+    } else if (check != 1 && whichsymbol[7] == 0 && ((v.contains(1) && v.contains(4)) || (v.contains(6) && v.contains(8)))) {
+        canvas.drawCircle((cx / 2), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[7] = -1;
+    } else if (check != 1 && whichsymbol[6] == 0 && ((v.contains(4) && v.contains(2)) || (v.contains(3) && v.contains(0)) || (v.contains(7) && v.contains(8)))) {
+        canvas.drawCircle((3 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[6] = -1;
+    } else if (check != 1 && whichsymbol[8] == 0 && ((v.contains(4) && v.contains(0)) || (v.contains(5) && v.contains(2)) || (v.contains(7) && v.contains(6)))) {
+        canvas.drawCircle((7 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[8] = -1;
+    } else if (check != 1 && whichsymbol[4] == 0 && ((v.contains(1) && v.contains(7)) || (v.contains(3) && v.contains(5)) || (v.contains(8) && v.contains(0)) || (v.contains(2) && v.contains(6)))) {
+        canvas.drawCircle((cx / 2), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[4] = -1;
+    } else if (whichsymbol[4] == 0 && !v.contains(4) && v.size() >= 1) //center
+    {
+        check = 1;
+        canvas.drawCircle((cx / 2), cy / 2, (cx / 10) - 20, blue);
+        whichsymbol[4] = -1;
+    } else if (v.contains(0) && whichsymbol[8] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((7 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[8] = -1;
+    } else if (v.contains(2) && whichsymbol[6] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((3 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[6] = -1;
+    } else if (v.contains(8) && whichsymbol[0] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((3 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[0] = -1;
+    } else if (v.contains(6) && whichsymbol[2] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((7 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[2] = -1;
+    } else if (check == 0 && whichsymbol[0] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((3 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[0] = -1;
+    } else if (check == 0 && whichsymbol[2] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((7 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[2] = -1;
+    } else if (check == 0 && whichsymbol[6] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((3 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[6] = -1;
+    } else if (check == 0 && whichsymbol[8] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((7 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[8] = -1;
+    } else if (whichsymbol[1] == 0 && v.size() >= 1) {
+        check = 1;
+        canvas.drawCircle((cx / 2), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[1] = -1;
+    } else if (whichsymbol[3] == 0 && v.size() >= 1) {
+        canvas.drawCircle((3 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[3] = -1;
+    } else if (whichsymbol[7] == 0 && v.size() >= 1) {
+        canvas.drawCircle((cx / 2), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[7] = -1;
+    } else if (whichsymbol[5] == 0 && v.size() >= 1) {
+        canvas.drawCircle((7 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[5] = -1;
+    }
 
-
-            if(check!=1 && !v.contains(0) && ((whichsymbol[1]==-1 && whichsymbol[2]==-1)||(whichsymbol[3]==-1 && whichsymbol[6]==-1)||(whichsymbol[4]==-1 && whichsymbol[8]==-1) ))
-            {  canvas.drawCircle((3*cx/10),cy/3,(cx/10)-20,blue) ; check=1;whichsymbol[0]=-1;}
-            else if(check!=1 && !v.contains(1) && ((whichsymbol[0]==-1 && whichsymbol[2]==-1)||(whichsymbol[4]==-1 && whichsymbol[7]==-1) ))
-        {   canvas.drawCircle((cx/2),cy/3,(cx/10)-20,blue); check=1;whichsymbol[1]=-1;}
-            else if(check!=1 && !v.contains(2) && ((whichsymbol[0]==-1 && whichsymbol[1]==-1)||(whichsymbol[4]==-1 && whichsymbol[6]==-1)||(whichsymbol[5]==-1 && whichsymbol[8]==-1) ))
-        {   canvas.drawCircle((7*cx/10),cy/3,(cx/10)-20,blue); check=1;whichsymbol[2]=-1;}
-            else if(check!=1 && !v.contains(3) && ((whichsymbol[0]==-1 && whichsymbol[6]==-1)||(whichsymbol[4]==-1 && whichsymbol[5]==-1)))
-        {  canvas.drawCircle((3*cx/10),cy/2,(cx/10)-20,blue) ; check=1;whichsymbol[3]=-1;}
-            else if(check!=1 && !v.contains(4) && ((whichsymbol[1]==-1 && whichsymbol[7]==-1)||(whichsymbol[3]==-1 && whichsymbol[5]==-1)||(whichsymbol[0]==-1 && whichsymbol[8]==-1)||(whichsymbol[2]==-1 && whichsymbol[6]==-1) ))
-        {  canvas.drawCircle((cx/2),cy/2,(cx/10)-20,blue) ; check=1;whichsymbol[4]=-1;}
-            else if(check!=1 && !v.contains(5) && ((whichsymbol[8]==-1 && whichsymbol[2]==-1)||(whichsymbol[3]==-1 && whichsymbol[4]==-1) ))
-        {  canvas.drawCircle((7*cx/10),cy/2,(cx/10)-20,blue) ; check=1;whichsymbol[5]=-1;}
-            else if(check!=1 && !v.contains(6) && ((whichsymbol[0]==-1 && whichsymbol[3]==-1)||(whichsymbol[7]==-1 && whichsymbol[8]==-1)||(whichsymbol[4]==-1 && whichsymbol[2]==-1) ))
-        {  canvas.drawCircle((3*cx/10),2*cy/3,(cx/10)-20,blue) ; check=1;whichsymbol[6]=-1;}
-            else if(check!=1 && !v.contains(7) && ((whichsymbol[1]==-1 && whichsymbol[4]==-1)||(whichsymbol[8]==-1 && whichsymbol[6]==-1) ))
-        {  canvas.drawCircle((cx/2),2*cy/3,(cx/10)-20,blue);check=1 ; check=1;whichsymbol[7]=-1;}
-            else if(check!=1 && !v.contains(8) && ((whichsymbol[5]==-1 && whichsymbol[2]==-1)||(whichsymbol[7]==-1 && whichsymbol[6]==-1)||(whichsymbol[4]==-1 && whichsymbol[0]==-1) ))
-        {  canvas.drawCircle((7*cx/10),2*cy/3,(cx/10)-20,blue) ; check=1;whichsymbol[8]=-1;}
-
-
-
-            else if(check!=1  && whichsymbol[0]==0 &&((v.contains(1)&&v.contains(2))||(v.contains(3)&&v.contains(6))||(v.contains(4)&&v.contains(8))))
-            {canvas.drawCircle((3*cx/10),cy/3,(cx/10)-20,blue); check=1;
-            whichsymbol[0]=-1;}
-            else if(check!=1  && whichsymbol[1]==0 &&((v.contains(0)&&v.contains(2))||(v.contains(4)&&v.contains(7))))
-                {canvas.drawCircle((cx/2),cy/3,(cx/10)-20,blue);check=1;
-                    whichsymbol[1]=-1;}
-            else if(check!=1  && whichsymbol[2]==0 &&((v.contains(1)&&v.contains(0))||(v.contains(4)&&v.contains(6))||(v.contains(5)&&v.contains(8))))
-                {canvas.drawCircle((7*cx/10),cy/3,(cx/10)-20,blue);check=1;
-                    whichsymbol[2]=-1;}
-
-            else if(check!=1  && whichsymbol[3]==0 &&((v.contains(4)&&v.contains(5))||(v.contains(0)&&v.contains(6))))
-                {canvas.drawCircle((3*cx/10),cy/2,(cx/10)-20,blue);check=1;
-                    whichsymbol[3]=-1;}
-
-            else if(check!=1  && whichsymbol[5]==0 &&((v.contains(8)&&v.contains(2))||(v.contains(4)&&v.contains(3))))
-               { canvas.drawCircle((7*cx/10),cy/2,(cx/10)-20,blue);
-               check=1;
-               whichsymbol[5]=-1;}
-
-            else if(check!=1  && whichsymbol[7]==0 && ((v.contains(1)&&v.contains(4))||(v.contains(6)&&v.contains(8))))
-                {canvas.drawCircle((cx/2),2*cy/3,(cx/10)-20,blue);check=1;
-                    whichsymbol[7]=-1;}
-
-            else if(check!=1  && whichsymbol[6]==0 &&((v.contains(4)&&v.contains(2))||(v.contains(3)&&v.contains(0))||(v.contains(7)&&v.contains(8))))
-                {canvas.drawCircle((3*cx/10),2*cy/3,(cx/10)-20,blue);check=1;
-                    whichsymbol[6]=-1;}
-
-            else if(check!=1  && whichsymbol[8]==0 &&((v.contains(4)&&v.contains(0))||(v.contains(5)&&v.contains(2))||(v.contains(7)&&v.contains(6))))
-               { canvas.drawCircle((7*cx/10),2*cy/3,(cx/10)-20,blue);check=1;
-                   whichsymbol[8]=-1;}
-
-            else if(check!=1 && whichsymbol[4]==0 &&((v.contains(1)&&v.contains(7))||(v.contains(3)&&v.contains(5))||(v.contains(8)&&v.contains(0))||(v.contains(2)&&v.contains(6))))
-               { canvas.drawCircle((cx/2),cy/2,(cx/10)-20,blue);check=1;whichsymbol[4]=-1;}
-
-            else if( whichsymbol[4]==0 && !v.contains(4) && v.size()>=1) //center
-                {check=1;canvas.drawCircle((cx/2),cy/2,(cx/10)-20,blue);whichsymbol[4]=-1;}
-
-
-            else if(v.contains(0) && whichsymbol[8]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((7*cx/10),2*cy/3,(cx/10)-20,blue);whichsymbol[8]=-1; }
-            else if(v.contains(2)&& whichsymbol[6]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((3*cx/10),2*cy/3,(cx/10)-20,blue);whichsymbol[6]=-1;}
-            else if(v.contains(8)&& whichsymbol[0]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((3*cx/10),cy/3,(cx/10)-20,blue);whichsymbol[0]=-1; }
-            else if(v.contains(6) && whichsymbol[2]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((7*cx/10),cy/3,(cx/10)-20,blue);whichsymbol[2]=-1; }
-
-
-            else if( check==0 && whichsymbol[0]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((3*cx/10),cy/3,(cx/10)-20,blue);whichsymbol[0]=-1; }
-            else if(check==0 && whichsymbol[2]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((7*cx/10),cy/3,(cx/10)-20,blue);whichsymbol[2]=-1;}
-            else if(check==0 && whichsymbol[6]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((3*cx/10),2*cy/3,(cx/10)-20,blue);whichsymbol[6]=-1;}
-            else if(check==0 && whichsymbol[8]==0 && v.size()>=1)
-                {check=1;canvas.drawCircle((7*cx/10),2*cy/3,(cx/10)-20,blue);whichsymbol[8]=-1;}
-
-            else if(whichsymbol[1]==0 && v.size()>=1)
-                {check=1; canvas.drawCircle((cx/2),cy/3,(cx/10)-20,blue);whichsymbol[1]=-1;}
-            else if(whichsymbol[3]==0 && v.size()>=1)
-                {canvas.drawCircle((3*cx/10),cy/2,(cx/10)-20,blue);check=1;
-                whichsymbol[3]=-1;}
-            else if(whichsymbol[7]==0 && v.size()>=1)
-                {canvas.drawCircle((cx/2),2*cy/3,(cx/10)-20,blue);check=1;
-                whichsymbol[7]=-1;}
-            else if(whichsymbol[5]==0 && v.size()>=1)
-                {canvas.drawCircle((7*cx/10),cy/2,(cx/10)-20,blue);
-                check=1;
-                whichsymbol[5]=-1;}
-
-
-
-
-
-
-        //hereend
-        if(whichsymbol[0]==-1)
-            canvas.drawCircle((3*cx/10),cy/3,(cx/10)-20,blue);
-        if(whichsymbol[1]==-1)
-            canvas.drawCircle((cx/2),cy/3,(cx/10)-20,blue);
-        if(whichsymbol[2]==-1)
-            canvas.drawCircle((7*cx/10),cy/3,(cx/10)-20,blue);
-        if(whichsymbol[3]==-1)
-            canvas.drawCircle((3*cx/10),cy/2,(cx/10)-20,blue);
-        if(whichsymbol[4]==-1)
-            canvas.drawCircle((cx/2),cy/2,(cx/10)-20,blue);
-        if(whichsymbol[5]==-1)
-            canvas.drawCircle((7*cx/10),cy/2,(cx/10)-20,blue);
-        if(whichsymbol[6]==-1)
-            canvas.drawCircle((3*cx/10),2*cy/3,(cx/10)-20,blue)            ;
-        if(whichsymbol[7]==-1)
-            canvas.drawCircle((cx/2),2*cy/3,(cx/10)-20,blue);
-        if(whichsymbol[8]==-1)
-            canvas.drawCircle((7*cx/10),2*cy/3,(cx/10)-20,blue);
+}
+    //hereend
+    if (whichsymbol[0] == -1)
+        canvas.drawCircle((3 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+    if (whichsymbol[1] == -1)
+        canvas.drawCircle((cx / 2), cy / 3, (cx / 10) - 20, blue);
+    if (whichsymbol[2] == -1)
+        canvas.drawCircle((7 * cx / 10), cy / 3, (cx / 10) - 20, blue);
+    if (whichsymbol[3] == -1)
+        canvas.drawCircle((3 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+    if (whichsymbol[4] == -1)
+        canvas.drawCircle((cx / 2), cy / 2, (cx / 10) - 20, blue);
+    if (whichsymbol[5] == -1)
+        canvas.drawCircle((7 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+    if (whichsymbol[6] == -1)
+        canvas.drawCircle((3 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
+    if (whichsymbol[7] == -1)
+        canvas.drawCircle((cx / 2), 2 * cy / 3, (cx / 10) - 20, blue);
+    if (whichsymbol[8] == -1)
+        canvas.drawCircle((7 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
 
 
         //addall
@@ -355,16 +389,34 @@ public class singleactor extends View {
             { canvas.drawText("ITS A DRAW",cx/2,7*cy/8,text) ;
                 MediaPlayer mp=MediaPlayer.create(getContext(),R.raw.start);
                 mp.start();
+
+                Intent intent=new Intent(getContext(),singlerecyclerview.class);
+                // intent.putExtra("whowon","5");
+                intent.putExtra("whowon",5);
+                getContext().startActivity(intent);
+
+
             }
             else if(s1>s2)
             { MediaPlayer mp2=MediaPlayer.create(getContext(),R.raw.player1victory);
             mp2.start();
+            canvas.drawText("YOU WIN !!",cx/2,7*cy/8,text);
+                Intent intent=new Intent(getContext(),singlerecyclerview.class);
+                //intent.putExtra("whowon","1");
+                intent.putExtra("whowon",1);
+                getContext().startActivity(intent);
 
-                canvas.drawText("YOU WIN !!",cx/2,7*cy/8,text);}
+            }
             else if(s1<s2)
             { MediaPlayer mp3=MediaPlayer.create(getContext(),R.raw.player2victory);
             mp3.start();
-                canvas.drawText("YOU LOSE !!",cx/2,7*cy/8,text);}
+                canvas.drawText("YOU LOSE !!",cx/2,7*cy/8,text);
+                Intent intent=new Intent(getContext(),singlerecyclerview.class);
+                intent.putExtra("whowon",2);
+                //intent.putExtra("whowon","2");
+                getContext().startActivity(intent);
+
+            }
 
 
 
@@ -381,35 +433,42 @@ public class singleactor extends View {
             case MotionEvent.ACTION_DOWN:
             { x=event.getX();
                 y=event.getY();
+                ck=0;
                 if(rounds!=5) {
                     if (!v.contains(0) && x >= cx / 5 && x <= (a - 15) && y >= cy / 4 && y <= (c - 15)) {
                         v.add(0);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[0] = rounds;
                     }
                     if (!v.contains(1) && x >= a + 15 && x <= b - 15 && y >= cy / 4 && y <= c - 15) {
                         v.add(1);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[1] = rounds;
                     }
                     if (!v.contains(2) && x >= b + 15 && x <= 4 * cx / 5 && y >= cy / 4 && y <= c - 15) {
                         v.add(2);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[2] = rounds;
                     }
 
                     if (!v.contains(3) && x >= cx / 5 && x <= (a - 15) && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
                         v.add(3);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[3] = rounds;
                     }
                     if (!v.contains(4) && x >= a + 15 && x <= b - 15 && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
                         v.add(4);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[4] = rounds;
                     }
                     if (!v.contains(5) && x >= b + 15 && x <= 4 * cx / 5 && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
                         v.add(5);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[5] = rounds;
                     }
@@ -417,15 +476,18 @@ public class singleactor extends View {
                     if (!v.contains(6) && x >= cx / 5 && x <= (a - 15) && y >= d + 15 && y <= 3 * cy / 4) {
                         v.add(6);
                         rounds = rounds + 1;
+                        ck=1;
                         whichsymbol[6] = rounds;
                     }
                     if (!v.contains(7) && x >= a + 15 && x <= b - 15 && y >= d + 15 && y <= 3 * cy / 4) {
                         v.add(7);
                         rounds = rounds + 1;
+                        ck=1;
                         whichsymbol[7] = rounds;
                     }
                     if (!v.contains(8) && x >= b + 15 && x <= 4 * cx / 5 && y >= d + 15 && y <= 3 * cy / 4) {
                         v.add(8);
+                        ck=1;
                         rounds = rounds + 1;
                         whichsymbol[8] = rounds;
                     }
