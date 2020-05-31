@@ -4,35 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFBDD3"
-    tools:context=".singlerecyclerview">
+    tools:context=".recycler"
+    android:background="#00BCD4">
+
 
     <androidx.recyclerview.widget.RecyclerView
-    android:background="#FFBDD3"
-        android:id="@+id/recyclerview"
+       android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#00BCD4"
         />
-<androidx.appcompat.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/toolbar"
-/>
+
     <Button
-        android:id="@+id/goback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/goback"
         android:text="home"
         android:textSize="24dp"
         android:textStyle="bold"
         android:height="70dp"
-        android:width="140dp"
+        android:width="150dp"
         android:background="@drawable/custom_button"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-
-
+        android:layout_alignParentBottom="true"
         />
-
 
 </RelativeLayout>

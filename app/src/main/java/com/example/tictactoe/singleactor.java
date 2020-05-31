@@ -176,12 +176,49 @@ if(ck==1) {
         canvas.drawCircle((cx / 2), cy / 2, (cx / 10) - 20, blue);
         check = 1;
         whichsymbol[4] = -1;
-    } else if (whichsymbol[4] == 0 && !v.contains(4) && v.size() >= 1) //center
+    }
+
+    else if (whichsymbol[4] == 0 && !v.contains(4) && v.size() >= 1) //center
     {
         check = 1;
         canvas.drawCircle((cx / 2), cy / 2, (cx / 10) - 20, blue);
         whichsymbol[4] = -1;
-    } else if (v.contains(0) && whichsymbol[8] == 0 && v.size() >= 1) {
+    }
+//here
+    else if(v.contains(0)&&v.contains(8)&&whichsymbol[1]==0 &&v.size()>=1)
+    { check = 1;
+        canvas.drawCircle((cx / 2), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[1] = -1;}
+    else if(v.contains(0)&&v.contains(8)&&whichsymbol[3]==0 &&v.size()>=1)
+    {canvas.drawCircle((3 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[3] = -1;}
+    else if(v.contains(0)&&v.contains(8)&&whichsymbol[5]==0 && v.size()>=1)
+    { canvas.drawCircle((7 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[5] = -1;}
+    else if(v.contains(0)&&v.contains(8)&&whichsymbol[7]==0 && v.size()>=1)
+    {canvas.drawCircle((cx / 2), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[7] = -1;}
+    else if(v.contains(2)&&v.contains(6)&&whichsymbol[1]==0 &&v.size()>=1)
+    { check = 1;
+        canvas.drawCircle((cx / 2), cy / 3, (cx / 10) - 20, blue);
+        whichsymbol[1] = -1;}
+    else if(v.contains(2)&&v.contains(6)&&whichsymbol[3]==0 &&v.size()>=1)
+    {canvas.drawCircle((3 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[3] = -1;}
+    else if(v.contains(2)&&v.contains(6)&&whichsymbol[5]==0 && v.size()>=1)
+    { canvas.drawCircle((7 * cx / 10), cy / 2, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[5] = -1;}
+    else if(v.contains(2)&&v.contains(6)&&whichsymbol[7]==0 && v.size()>=1)
+    {canvas.drawCircle((cx / 2), 2 * cy / 3, (cx / 10) - 20, blue);
+        check = 1;
+        whichsymbol[7] = -1;}
+    //till here
+    else if (v.contains(0) && whichsymbol[8] == 0 && v.size() >= 1) {
         check = 1;
         canvas.drawCircle((7 * cx / 10), 2 * cy / 3, (cx / 10) - 20, blue);
         whichsymbol[8] = -1;
@@ -410,6 +447,8 @@ if(ck==1) {
             else if(s1<s2)
             { MediaPlayer mp3=MediaPlayer.create(getContext(),R.raw.player2victory);
             mp3.start();
+
+
                 canvas.drawText("YOU LOSE !!",cx/2,7*cy/8,text);
                 Intent intent=new Intent(getContext(),singlerecyclerview.class);
                 intent.putExtra("whowon",2);
@@ -435,57 +474,57 @@ if(ck==1) {
                 y=event.getY();
                 ck=0;
                 if(rounds!=5) {
-                    if (!v.contains(0) && x >= cx / 5 && x <= (a - 15) && y >= cy / 4 && y <= (c - 15)) {
+                    if (whichsymbol[0]==0 && !v.contains(0) && x >= cx / 5 && x <= (a - 15) && y >= cy / 4 && y <= (c - 15)) {
                         v.add(0);
                         ck=1;
                         rounds = rounds + 1;
                         whichsymbol[0] = rounds;
                     }
-                    if (!v.contains(1) && x >= a + 15 && x <= b - 15 && y >= cy / 4 && y <= c - 15) {
+                    if (whichsymbol[1]==0 && !v.contains(1) && x >= a + 15 && x <= b - 15 && y >= cy / 4 && y <= c - 15) {
                         v.add(1);
                         ck=1;
                         rounds = rounds + 1;
                         whichsymbol[1] = rounds;
                     }
-                    if (!v.contains(2) && x >= b + 15 && x <= 4 * cx / 5 && y >= cy / 4 && y <= c - 15) {
+                    if (whichsymbol[2]==0 && !v.contains(2) && x >= b + 15 && x <= 4 * cx / 5 && y >= cy / 4 && y <= c - 15) {
                         v.add(2);
                         ck=1;
                         rounds = rounds + 1;
                         whichsymbol[2] = rounds;
                     }
 
-                    if (!v.contains(3) && x >= cx / 5 && x <= (a - 15) && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
+                    if (whichsymbol[3]==0 && !v.contains(3) && x >= cx / 5 && x <= (a - 15) && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
                         v.add(3);
                         ck=1;
                         rounds = rounds + 1;
                         whichsymbol[3] = rounds;
                     }
-                    if (!v.contains(4) && x >= a + 15 && x <= b - 15 && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
+                    if (whichsymbol[4]==0 && !v.contains(4) && x >= a + 15 && x <= b - 15 && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
                         v.add(4);
                         ck=1;
                         rounds = rounds + 1;
                         whichsymbol[4] = rounds;
                     }
-                    if (!v.contains(5) && x >= b + 15 && x <= 4 * cx / 5 && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
+                    if (whichsymbol[5]==0 && !v.contains(5) && x >= b + 15 && x <= 4 * cx / 5 && y >= (5 * cy / 12) + 15 && y <= (d - 15)) {
                         v.add(5);
                         ck=1;
                         rounds = rounds + 1;
                         whichsymbol[5] = rounds;
                     }
 
-                    if (!v.contains(6) && x >= cx / 5 && x <= (a - 15) && y >= d + 15 && y <= 3 * cy / 4) {
+                    if (whichsymbol[6]==0 && !v.contains(6) && x >= cx / 5 && x <= (a - 15) && y >= d + 15 && y <= 3 * cy / 4) {
                         v.add(6);
                         rounds = rounds + 1;
                         ck=1;
                         whichsymbol[6] = rounds;
                     }
-                    if (!v.contains(7) && x >= a + 15 && x <= b - 15 && y >= d + 15 && y <= 3 * cy / 4) {
+                    if (whichsymbol[7]==0 && !v.contains(7) && x >= a + 15 && x <= b - 15 && y >= d + 15 && y <= 3 * cy / 4) {
                         v.add(7);
                         rounds = rounds + 1;
                         ck=1;
                         whichsymbol[7] = rounds;
                     }
-                    if (!v.contains(8) && x >= b + 15 && x <= 4 * cx / 5 && y >= d + 15 && y <= 3 * cy / 4) {
+                    if (whichsymbol[8]==0 && !v.contains(8) && x >= b + 15 && x <= 4 * cx / 5 && y >= d + 15 && y <= 3 * cy / 4) {
                         v.add(8);
                         ck=1;
                         rounds = rounds + 1;
